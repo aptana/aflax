@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AFLAX: The AJAX Library for the Adobe Flash&trade; Platform</title>
+
+<LINK href='../../include/style.css' type='text/css' rel='stylesheet'>
+
+<script type="text/javascript" src="../../lib/AFLAX/aflax.js"></script>
+<script type="text/javascript" src="../../lib/MochiKit/MochiKit.js"></script>
+
+<script type="text/javascript" src="../../lib/Slider/js/range.js"></script>
+<script type="text/javascript" src="../../lib/Slider/js/timer.js"></script>
+<script type="text/javascript" src="../../lib/Slider/js/slider.js"></script>
+<link type="text/css" rel="StyleSheet" href="../../lib/Slider/css/luna/luna.css" />
+
+<script type="text/javascript" src="spirograph.js"></script>
+
+<script>
+	var aflax = new AFLAX("../../lib/AFLAX/aflax.swf");
+	
+	function go()
+	{
+		start();
+	}
+</script>
+</head>
+
+<body style="background: #eeeeee;" >
+
+	<div id="body">
+		<script type="text/javascript">
+		window.onload = function(){
+			roundElement("mainmenu");
+			roundElement("menu", {bgColor: "#eeeeee" });
+		}
+		</script> 
+	
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr align="left">
+			<td width="245"><img src="/aflax_logo_gray.gif"></td>
+			<td align="bottom">
+				<div id="mainmenu" class="menuBox">
+					&nbsp;
+					<a class="menuLink" href="/">Home</a>
+					<a class="menuLink" href="/#download">Download</a>
+					<a class="menuLink" href="/#demos">Demos</a>
+					<a class="menuLink" href="/#documentation">Documentation</a>
+					<a class="menuLink" href="/#support">Support</a>
+					<a class="menuLink" href="/wordpress/">Blog</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	  
+	  <div id="menu">
+		<div id="toc">
+			<p>Spirograph Demo</p>
+		</div>
+	  </div>
+	  
+	</div>
+
+
+	<div id="content">
+	
+		<div>
+		
+			<p>Spirograph -- original ActionScript version by <a target="_blank" href="http://www.krazydad.com/bestiary/bestiary_spyrograph.html">Jim Bumgardner</a>.
+			</p>
+			
+			<script>
+				aflax.insertFlash(400,400, "#FFFFFF", "go");
+			</script>
+		
+			<table border=0 width="400">
+				<tr>
+					<td>
+						<label>Disc Size:</label>
+					</td>
+					<td width="100">
+						<div class="slider" id="slider-1" tabIndex="1">
+						   <input class="slider-input" id="slider-input-1" name="slider-input-1"/>
+						</div>
+					</td>
+					<td>
+						<label id="slider-1-text">0</label>
+					</td>
+					<td>
+						<button style="width: 75px" onClick="showGuide = (showGuide == false);">Guide</button>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<label>Pen Hole:</label>
+					</td>
+					<td width="100">
+						<div class="slider" id="slider-2" tabIndex="2">
+						   <input class="slider-input" id="slider-input-2" name="slider-input-2"/>
+						</div>
+					</td>
+					<td>
+						<label id="slider-2-text">0</label>
+					</td>
+					<td>
+						<button style="width: 75px" onClick="resetDots();">Clear</button>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label>Thickness:</label>
+					</td>
+					<td width="100">
+						<div class="slider" id="slider-3" tabIndex="3">
+						   <input class="slider-input" id="slider-input-3" name="slider-input-3"/>
+						</div>
+					</td>
+					<td>
+						<label id="slider-3-text">0</label>
+					</td>
+					<td>
+						<button style="width: 75px" onClick="isTiger = (isTiger == false); adjustColor();">Tiger</button>
+					</td>
+				</tr>
+				
+			</table>
+		</div>
+		
+		<p></p>
+		
+		View source: <a href="../view-source/view-source.html#spirograph/spirograph.js" target="_blank">spirograph.js</a>
+		
+	</div>
+
+		
+<script type="text/javascript">
+
+	var s = new Slider(document.getElementById("slider-1"), document.getElementById("slider-input-1"));
+	var s2 = new Slider(document.getElementById("slider-2"), document.getElementById("slider-input-2"));
+	var s3 = new Slider(document.getElementById("slider-3"), document.getElementById("slider-input-3"));
+
+	s.setMinimum(2);
+	s.setMaximum(99);
+	s.setUnitIncrement(1);
+	s.setValue(discRadR*100);
+	document.getElementById("slider-1-text").innerHTML = discRadR;
+
+	s2.setMinimum(1);
+	s2.setMaximum(100);
+	s2.setUnitIncrement(1);
+	s2.setValue(penRadR*100);
+	document.getElementById("slider-2-text").innerHTML = penRadR;
+
+	s3.setMinimum(1);
+	s3.setMaximum(20);
+	s3.setUnitIncrement(1);
+	s3.setValue(lineThick);
+	document.getElementById("slider-3-text").innerHTML = lineThick;
+	
+	s.onchange = function () {
+		var v = s.getValue() / 100;
+		document.getElementById("slider-1-text").innerHTML = v;
+		discRadR = v;
+	};
+	
+	s2.onchange = function () {
+		var v = s2.getValue() / 100;
+		document.getElementById("slider-2-text").innerHTML = v;
+		penRadR = v;
+	};
+
+	s3.onchange = function () {
+		var v = s3.getValue();
+		document.getElementById("slider-3-text").innerHTML = v;
+		lineThick = v;
+	};
+	
+	
+</script>
+
+</body>
+
+

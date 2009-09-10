@@ -1,0 +1,6 @@
+Aflax® is Ajax for the Flash platform. Aflax is a JavaScript library that enables 
+developers to use JavaScript to fully utilize all of the features of the Adobe
+Flash runtime -- including graphics, networking, video and camera support.
+
+Aflax was created by Paul Colton, founder of Aptana, Inc. (http://www.aptana.com)
+

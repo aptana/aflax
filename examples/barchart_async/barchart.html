@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AFLAX: The AJAX Library for the Adobe Flash&trade; Platform</title>
+
+<LINK href='../../include/style.css' type='text/css' rel='stylesheet'>
+
+<script type="text/javascript" src="../../lib/AFLAX/aflax.js"></script>
+<script type="text/javascript" src="../../lib/MochiKit/MochiKit.js"></script>
+
+<script type="text/javascript" src="barchart.js"></script>
+
+<script>
+	var aflax1 = new AFLAX("../../lib/AFLAX/aflax.swf");
+	var barChart1 = new barChartAsync(aflax1);
+	
+	function go()
+	{
+		roundCorners();
+		barChart1.init();
+	}	
+	
+	function roundCorners()
+	{
+		roundElement("mainmenu");
+		roundElement("menu", {bgColor: "#eeeeee" });
+	}
+	
+</script>
+
+</head>
+
+<body style="background: #eeeeee;" onUnload="if(barChart1 != null) { barChart1.cleanup(); }">
+
+	<div id="body">
+	
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr align="left">
+			<td width="245"><img src="/aflax_logo_gray.gif"></td>
+			<td align="bottom">
+				<div id="mainmenu" class="menuBox">
+					&nbsp;
+					<a class="menuLink" href="/">Home</a>
+					<a class="menuLink" href="/#download">Download</a>
+					<a class="menuLink" href="/#demos">Demos</a>
+					<a class="menuLink" href="/#documentation">Documentation</a>
+					<a class="menuLink" href="/#support">Support</a>
+					<a class="menuLink" href="/wordpress/">Blog</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+	  
+	  <div id="menu">
+		<div id="toc">
+			<p>BarChart Demo With Async Data Loading</p>
+		</div>
+	  </div>
+	  
+	</div>
+
+
+	<div id="content">
+	
+		<div style="width:425;border:1px solid #ddd">
+			<script>
+				aflax1.insertFlash(425, 250, "#FFFFFF", "go");
+			</script>
+		</div>
+		
+		<p></p>
+		
+		<input type="button" value="Load Data From Server" onclick="barChart1.start();">
+		
+		<p></p>
+		
+		View source: <a href="../view-source/view-source.html#barchart_async/barchart.js" target="_blank">barchart.js</a>
+		
+	</div>
+
+
+</body>
+

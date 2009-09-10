@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AFLAX: The AJAX Library for the Adobe Flash&trade; Platform</title>
+
+<LINK href='../../include/style.css' type='text/css' rel='stylesheet'>
+
+<script type='text/javascript'>djConfig = { baseScriptUri: './', isDebug: false };</script>
+
+<script type="text/javascript" src="../../lib/MochiKit/MochiKit.js"></script>
+<script type="text/javascript" src="../../lib/dojo/dojo.js"></script>
+
+<script type="text/javascript" src="../../lib/AFLAX/aflax.js"></script>
+
+<script language="JavaScript" type="text/javascript">
+
+	var aflax1 = new AFLAX("/lib/AFLAX/aflax.swf");
+
+	function roundMyElements()
+	{
+		roundElement("mainmenu");
+		roundElement("menu", {bgColor: "#eeeeee" });
+	}
+	
+	function onCue(cue)
+	{
+		$('videoText').innerHTML = "Cue Point: " + cue;
+	}
+
+	dojo.require("dojo.widget.VideoPlayer");
+	dojo.addOnLoad(roundMyElements);
+
+</script>
+
+</head>
+
+<body style="background: #eeeeee;">
+	<div id="body">
+	
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr align="left">
+			<td width="245"><img src="/aflax_logo_gray.gif"></td>
+			<td align="bottom">
+				<div id="mainmenu" class="menuBox">
+					&nbsp;
+					<a class="menuLink" href="/">Home</a>
+					<a class="menuLink" href="/#download">Download</a>
+					<a class="menuLink" href="/#demos">Demos</a>
+					<a class="menuLink" href="/#documentation">Documentation</a>
+					<a class="menuLink" href="/#support">Support</a>
+					<a class="menuLink" href="/wordpress/">Blog</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+	  
+	  <div id="menu">
+		<div id="toc">
+			<p>Dojo VideoPlayer Widget Demo</p>
+		</div>
+	  </div>
+	  
+	</div>
+
+	<p></p>
+
+	<table><tr><td>
+	<table>
+	<tr>
+		<td>
+			VideoPlayer Widget:<br/>
+			<br/>
+			<div style="border: 1px solid #cccccc;padding:4px">
+			<div id="videoText"></div><br/>
+		    <dojo:VideoPlayer
+		    	aflaxRef="aflax1"
+		    	videoFile="/examples/video/autocross.flv"
+		    	width="300"	height="225" 
+		    	onCueEvent="onCue" />
+		    </div>
+		</td>
+		<td>
+			Widget Usage Example:<pre>&lt;dojo:VideoPlayer 
+    aflaxRef="aflax1"
+    videoFile="/examples/video/autocross.flv"
+    width="300"	height="225" 
+    onCueEvent="onCue" /&gt;</pre>
+		</td>
+	</tr>
+	</table>
+	
+    </td></tr></table>
+    
+	<p></p>
+	
+	<p></p>
+		
+	View page source: <a href="../view-source/view-source.html#video4dojo/video.html" target="_blank">video.html</a>
+	<br/>
+	View widget source: <a href="../view-source/view-source.html#video4dojo/src/widget/VideoPlayer.js" target="_blank">VideoPlayer.js</a>
+	
+	<p></p>
+
+	<b>Please note:</b>
+	<p></p>
+	
+	I had to make a fix to the dojo-0.2.2-widget/dojo.js file. In the uncompressed version (dojo.js.uncompressed.js),
+	I made the following change:
+	<p></p>
+	
+	<pre>
+OLD Line 12159:
+
+	}else if((fragment[item][0])&&(fragment[item][0].value!="")){
+
+NEW Line 12159:
+
+	}else if((fragment[item][0])&&(fragment[item][0].value!="")&&(fragment[item][0].value!=null)){
+	</pre>
+	</div>
+	
+</body>
+</html>

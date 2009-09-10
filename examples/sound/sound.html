@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AFLAX: The AJAX Library for the Adobe Flash&trade; Platform</title>
+
+<LINK href='../../include/style.css' type='text/css' rel='stylesheet'>
+
+<script type="text/javascript" src="../../lib/AFLAX/aflax.js"></script>
+<script type="text/javascript" src="../../lib/MochiKit/MochiKit.js"></script>
+
+<script>
+	
+	var aflax = new AFLAX("../../lib/AFLAX/aflax.swf");
+	var soundObj = null;
+	
+	function go()
+	{
+		AFLAX.trace("Here")
+		
+		soundObj = new AFLAX.FlashObject(aflax, "Sound");
+
+		AFLAX.trace(soundObj.id);
+		
+		soundObj.exposeFunction("loadSound", soundObj);		
+		soundObj.exposeFunction("start", soundObj);		
+		soundObj.exposeFunction("stop", soundObj);		
+		soundObj.exposeProperty("position", soundObj);
+		
+		soundObj.mapFunction("addEventHandler");		
+		
+		soundObj.addEventHandler("onLoad", "readyToPlay");
+		
+		soundObj.loadSound("song.mp3", true);
+	}
+	
+	function readyToPlay()
+	{
+		$('play').innerHTML = "Play";
+		$('play').disabled = false;
+	}
+
+	function time()
+	{
+		if(soundObj != null)
+		{
+			var t = soundObj.getPosition();
+			$('pos').value = "Song Time: " + t/1000;
+		}
+	}
+
+	
+</script>
+
+</head>
+
+<body style="background: #eeeeee;">
+	<div id="body">
+		<script type="text/javascript">
+		window.onload = function(){
+			roundElement("mainmenu");
+			roundElement("menu", {bgColor: "#eeeeee" });
+		}
+		</script> 
+	
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr align="left">
+			<td width="245"><img src="/aflax_logo_gray.gif"></td>
+			<td align="bottom">
+				<div id="mainmenu" class="menuBox">
+					&nbsp;
+					<a class="menuLink" href="/">Home</a>
+					<a class="menuLink" href="/#download">Download</a>
+					<a class="menuLink" href="/#demos">Demos</a>
+					<a class="menuLink" href="/#documentation">Documentation</a>
+					<a class="menuLink" href="/#support">Support</a>
+					<a class="menuLink" href="/wordpress/">Blog</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	  
+	  <div id="menu">
+		<div id="toc">
+			<p>Audio Demo - "Gold Digger"</p>
+		</div>
+	  </div>
+	  
+	</div>
+
+
+	<div id="content">
+
+		<p>This demo shows how to play an MP3 file using the AFLAX library.</p>
+		
+		<p><input id="pos"></input></p>
+		
+		<p><button disabled="true" id="play" onClick="soundObj.start()">Loading...</button>
+		<button type="button" onClick="soundObj.stop()">Stop</button></p>
+		
+		<script>
+			aflax.insertFlash(1, 1, "#FFFFFF", "go", true);
+			setInterval("time()", 1000);
+		</script>
+		
+		<p></p>
+		
+		View source: <a href="../view-source/view-source.html#sound/sound.html" target="_blank">sound.html</a>
+	
+	</div>
+	
+</body>

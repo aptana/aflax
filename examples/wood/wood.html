@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AFLAX: The AJAX Library for the Adobe Flash&trade; Platform</title>
+
+<LINK href='../../include/style.css' type='text/css' rel='stylesheet'>
+
+<script type="text/javascript" src="../../lib/AFLAX/aflax.js"></script>
+<script type="text/javascript" src="../../lib/MochiKit/MochiKit.js"></script>
+
+<script type="text/javascript" src="wood.js"></script>
+
+<script>
+	var aflax = new AFLAX("../../lib/AFLAX/aflax.swf");
+	
+	function go()
+	{
+		wood();
+	}	
+</script>
+
+</head>
+
+<body style="background: #eeeeee;">
+
+	<div id="body">
+		<script type="text/javascript">
+		window.onload = function(){
+			roundElement("mainmenu");
+			roundElement("menu", {bgColor: "#eeeeee" });
+		}
+		</script> 
+	
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr align="left">
+			<td width="245"><img src="/aflax_logo_gray.gif"></td>
+			<td align="bottom">
+				<div id="mainmenu" class="menuBox">
+					&nbsp;
+					<a class="menuLink" href="/">Home</a>
+					<a class="menuLink" href="/#download">Download</a>
+					<a class="menuLink" href="/#demos">Demos</a>
+					<a class="menuLink" href="/#documentation">Documentation</a>
+					<a class="menuLink" href="/#support">Support</a>
+					<a class="menuLink" href="/wordpress/">Blog</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	  
+	  <div id="menu">
+		<div id="toc">
+			<p>Drawing Demo - Wood Texture</p>
+		</div>
+	  </div>
+	  
+	</div>
+
+
+	<div id="content">
+	
+		<p>Example of using Flash drawing functions to create a Perlin Wood Texture. Only the wood block is a Flash object, the rest is
+		all HTML -- and of course the entire thing was coded in JavaScript.</p>
+		
+		<table style="background: #dddddd; border:1px solid #CCCCCC;">
+			<tr>
+				<td align="center">
+					<script>
+						aflax.insertFlash(480, 100, "#ffffff", "go");
+					</script>
+					
+					<table width="80%">
+						<tr>
+							<td align="right">
+								baseX: <input size=3 onChange="set_perlinBaseX(this.value); update();" value="400"></input>
+							</td>
+						
+							<td align="right">
+								TreeRings: <select onChange="set_grainLayers(this.options[this.selectedIndex].value); update();">
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="11">11</option>
+									<option value="13">13</option>
+									<option value="15" selected>15</option>
+									<option value="18">18</option>
+									<option value="20">20</option>
+									<option value="25">25</option>
+									<option value="30">30</option>
+								</select>
+							</td>
+							
+							<td align="right">
+								<select onChange="set_fractalNoise(this.value == 'false'); update();">
+									<option value="true" selected>Fractal</option>
+									<option value="false">Turbulence</option>
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="right">
+								baseY: <input size=3 onChange="set_perlinBaseY(this.value); update();;" value="120"></input>
+							</td>
+
+							<td align="right">
+								numOctave: <select onChange="set_octaves(this.options[this.selectedIndex].value); update();">
+									<option value="1" selected>1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+
+							<td align="right">
+								RandSeed: <input size=3 onChange="set_seed(this.value); update();;" value="128"></input>
+							</td>
+						
+						</tr>
+					</table>
+					
+					<table width="100%" bgcolor="#aaaaaa">
+					<tr>
+						<td>Color 0:</td>
+						<td width=40 height=18 bgcolor="#aa5522" onClick="set_rgb0(0xaa5522); update();"></td>
+						<td width=40 height=18 bgcolor="#ee9922" onClick="set_rgb0(0xee9922); update();"></td>
+						<td width=40 height=18 bgcolor="#b93322" onClick="set_rgb0(0xb93322); update();"></td>
+						<td width=40 height=18 bgcolor="#e3bd22" onClick="set_rgb0(0xe3bd22); update();"></td>
+						<td width=40 height=18 bgcolor="#c89b24" onClick="set_rgb0(0xc89b24); update();"></td>
+						<td width=40 height=18 bgcolor="#af7c22" onClick="set_rgb0(0xaf7c22); update();"></td>
+						<td width=40 height=18 bgcolor="#a3813f" onClick="set_rgb0(0xa3813f); update();"></td>
+						<td width=40 height=18 bgcolor="#675410" onClick="set_rgb0(0x675410); update();"></td>
+						<td width=40 height=18 bgcolor="#2b2306" onClick="set_rgb0(0x2b2306); update();"></td>
+					</tr>
+					</table>
+				
+					<table width="100%" bgcolor="#aaaaaa">
+					<tr>
+						<td>Color 1:</td>
+						<td width=40 height=18 bgcolor="#aa5522" onClick="set_rgb1(0xaa5522); update();"></td>
+						<td width=40 height=18 bgcolor="#ee9922" onClick="set_rgb1(0xee9922); update();"></td>
+						<td width=40 height=18 bgcolor="#b93322" onClick="set_rgb1(0xb93322); update();"></td>
+						<td width=40 height=18 bgcolor="#e3bd22" onClick="set_rgb1(0xe3bd22); update();"></td>
+						<td width=40 height=18 bgcolor="#c89b24" onClick="set_rgb1(0xc89b24); update();"></td>
+						<td width=40 height=18 bgcolor="#af7c22" onClick="set_rgb1(0xaf7c22); update();"></td>
+						<td width=40 height=18 bgcolor="#a3813f" onClick="set_rgb1(0xa3813f); update();"></td>
+						<td width=40 height=18 bgcolor="#675410" onClick="set_rgb1(0x675410); update();"></td>
+						<td width=40 height=18 bgcolor="#2b2306" onClick="set_rgb1(0x2b2306); update();"></td>
+					</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+		
+		<p></p>
+		
+		<p>Ported from code at <a href="http://www.connectedpixel.com " 
+			target="_blank">www.connectedpixel.com </a> by Joel May</p>
+		
+		View source: <a href="../view-source/view-source.html#wood/wood.js" target="_blank">wood.js</a>
+		
+	</div>
+
+
+</body>
+

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AFLAX: The AJAX Library for the Adobe Flash&trade; Platform</title>
+
+<LINK href='../../include/style.css' type='text/css' rel='stylesheet'>
+
+<script type="text/javascript" src="../../lib/AFLAX/aflax.js"></script>
+<script type="text/javascript" src="../../lib/MochiKit/MochiKit.js"></script>
+
+<script>
+	var aflax = new AFLAX("../../lib/AFLAX/aflax.swf");
+	var connection = null;
+	var username = "Unknown";
+	var firstLine = true;
+	
+	function go()
+	{
+	}	
+	
+	function onConnectEvent(val)
+	{
+		if(val)
+			appendData("Connection successful.");
+		else
+			appendData("Could not make connection to server.");
+	}
+	
+	function onDataEvent(str)
+	{
+		var i = str.indexOf(":");
+		var name = str.substring(0, i);
+		var rest = str.substring(i+1);
+		var color = "blue";
+		if(name == username) color = "red";
+		appendData("<font color='" + color + "'>" + name + ':</font> ' + rest);
+	}
+	
+	function onCloseEvent()
+	{
+		appendData("Connection closed.");
+	}
+
+	function send(str)
+	{
+		connection.send(username + ': ' + str);
+	}
+	
+	function showUI(name)
+	{
+		username = name;
+		
+		var entry = document.getElementById("nameEntry");
+		entry.style.visibility = "hidden";
+		entry.style.display = "none";
+
+		var ui = document.getElementById("chatUI");
+		ui.style.visibility = "visible";
+		ui.style.display = "block";
+
+		connection = new AFLAX.Socket(aflax, "www.aflax.org", 7777, 
+			"onConnectEvent", "onDataEvent", "onCloseEvent");
+	}
+	
+	function appendData(str)
+	{
+		var chat = document.getElementById("chat");
+		chat.innerHTML += str + "<BR>";
+		chat.scrollTop = chat.scrollHeight - chat.clientHeight;
+	}
+	
+</script>
+
+</head>
+
+<body style="background: #eeeeee;">
+
+	<div id="body">
+		<script type="text/javascript">
+		window.onload = function(){
+			roundElement("mainmenu");
+			roundElement("menu", {bgColor: "#eeeeee" });
+		}
+		</script> 
+	
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr align="left">
+			<td width="245"><img src="/aflax_logo_gray.gif"></td>
+			<td align="bottom">
+				<div id="mainmenu" class="menuBox">
+					&nbsp;
+					<a class="menuLink" href="/">Home</a>
+					<a class="menuLink" href="/#download">Download</a>
+					<a class="menuLink" href="/#demos">Demos</a>
+					<a class="menuLink" href="/#documentation">Documentation</a>
+					<a class="menuLink" href="/#support">Support</a>
+					<a class="menuLink" href="/wordpress/">Blog</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	  
+	  <div id="menu">
+		<div id="toc">
+			<p>Sockets Demo - Chat Client</p>
+		</div>
+	  </div>
+	  
+	</div>
+
+
+	<div id="content">
+
+		<p>Socket Demo</p>
+		
+		<p>Uses sockets to receive events (without polling!) from a chat server when others have sent a message. Also
+		allows you to send out messages.</p>
+		
+		<div id="nameEntry">Please enter your name: <input size="30" value="" onkeyup="if(event.keyCode == 13) showUI(this.value);"></input></div>
+		
+		<table id="chatUI" style="background: #dddddd; border:1px solid #CCCCCC;visibily:hidden;display:none">
+			<tr>
+				<td>
+					<div id="chat" style="overflow: auto; width:500px; height:300px"></div>
+				</td>
+			</tr>
+			<tr>	
+				<td>
+					<input style="width:500px" onkeyup="if(event.keyCode == 13) { send(this.value); this.value=''; }">
+				</td>
+			</tr>
+		</table>
+
+		<p>Note that this demo is doing no buffering on the data, so some lines may get
+		broken into two or more events.
+		</p>
+		
+		<script>
+			aflax.insertFlash(1,1, "#ffffff", "go", true);
+		</script>
+	
+		<p></p>
+		
+		View source: <a href="../view-source/view-source.html#sockets/sockets.html" target="_blank">sockets.html</a>
+		<br>
+		View server source: <a href="../view-source/view-source.html#sockets/server.pl.html" target="_blank">server.pl</a>
+		
+	</div>
+
+
+</body>
+

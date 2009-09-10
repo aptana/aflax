@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AFLAX: The AJAX Library for the Adobe Flash&trade; Platform</title>
+
+<LINK href='../../include/style.css' type='text/css' rel='stylesheet'>
+
+<script type="text/javascript" src="../../lib/AFLAX/aflax.js"></script>
+<script type="text/javascript" src="../../lib/MochiKit/MochiKit.js"></script>
+<script type="text/javascript" src="../../lib/prototype/prototype.js"></script>
+<script type="text/javascript" src="../../lib/rico/rico.js"></script>
+<script type="text/javascript" src="video.js"></script>
+
+<style>
+.accordionTabTitleBar {
+   font-size           : 12px;
+	padding             : 4px 6px 4px 6px;
+   border-style        : solid none solid none;
+	border-top-color    : #BDC7E7;
+	border-bottom-color : #182052;
+   border-width        : 1px 0px 1px 0px;
+}
+
+.accordionTabTitleBarHover {
+   font-size        : 11px;
+	background-color : #1f669b;
+	color            : #000000;
+}
+
+.accordionTabContentBox {
+   font-size        : 11px;
+   border           : 1px solid #1f669b;
+   border-top-width : 0px;
+   padding          : 0px 8px 0px 8px;
+}
+</style>
+
+<script>
+	
+	var aflax = new AFLAX("../../lib/AFLAX/aflax.swf");
+	var aflax2 = new AFLAX("../../lib/AFLAX/aflax.swf");
+	var v = null;
+	var v2 = null;
+	var onloads = new Array();
+    
+    function bodyOnLoad()
+	{
+         new Rico.Effect.Round( null, 'roundNormal' );
+         new Rico.Effect.Round( null, 'roundCompact', {compact:true} );
+         for ( var i = 0 ; i < onloads.length ; i++ )
+            onloads[i]();
+	}
+
+	function go1()
+	{
+		loadVideo1();
+	}
+	
+	function loadVideo1()
+	{
+		v = new videoSample(aflax, "onCue", "onLoad", "../../examples/video/autocross.flv");
+		v.pause();
+		v.seek(0);
+	}
+
+	function go2()
+	{
+		loadVideo2();
+	}
+
+	function loadVideo2()
+	{
+		v2 = new videoSample(aflax2, "", "onLoad2", "../../examples/video3/springmtn.flv");
+		v2.pause();
+		v2.seek(0);
+	}
+	
+	function stopAll()
+	{
+		v.stop();
+		v2.stop();
+	}
+	
+	function onLoad(s)
+	{
+		if(AFLAX.VideoClip.GetStatusValue(s, "code") == AFLAX.VideoClip.NetStream_Play_Start)
+		{
+			v.video.set_width(300);
+			v.video.set_height(225);		
+		}
+	}
+	
+	function onLoad2(s)
+	{
+		if(AFLAX.VideoClip.GetStatusValue(s, "code") == AFLAX.VideoClip.NetStream_Play_Start)
+		{
+			v2.video.set_width(300);
+			v2.video.set_height(225);		
+		}
+	}
+	
+	function onCue(s)
+	{
+		$('videoText').innerHTML = videoTextSet[AFLAX.VideoClip.GetStatusValue(s,"name")];
+	}
+	
+	function roundMyElements()
+	{
+		roundElement("mainmenu");
+		roundElement("menu", {bgColor: "#eeeeee" });
+	}
+	
+	function accordion()
+	{
+		new Rico.Accordion( 'accordionExample', {panelHeight:227});
+	}
+
+	function insertAFLAX()
+	{
+		aflax.addFlashToElement("aflax1", 300, 225, "#FFFFFF", "go1", true);
+		aflax2.addFlashToElement("aflax2", 300, 225, "#FFFFFF", "go2", true);
+	}
+	
+	function setup()
+	{
+		bodyOnLoad();
+		roundMyElements();
+		accordion();
+		setTimeout("insertAFLAX()", 500);
+	}
+
+</script>
+
+</head>
+
+<body style="background: #eeeeee;" onload="setup();">
+	<div id="body">
+	
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr align="left">
+			<td width="245"><img src="/aflax_logo_gray.gif"></td>
+			<td align="bottom">
+				<div id="mainmenu" class="menuBox">
+					&nbsp;
+					<a class="menuLink" href="/">Home</a>
+					<a class="menuLink" href="/#download">Download</a>
+					<a class="menuLink" href="/#demos">Demos</a>
+					<a class="menuLink" href="/#documentation">Documentation</a>
+					<a class="menuLink" href="/#support">Support</a>
+					<a class="menuLink" href="/wordpress/">Blog</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	  
+	  <div id="menu">
+		<div id="toc">
+			<p>Rico AJAX Lib & AFLAX Videos</p>
+		</div>
+	  </div>
+	  
+	</div>
+
+
+	<div id="content">
+
+<div style="margin-top:6px; border-top-width:1px; border-top-style:solid;" id="accordionExample">
+
+	<div id="panel1">
+	  <div id="panel1Header" class="accordionTabTitleBar">
+	  	Overview
+	  </div>
+	  <div id="panel1Content"  class="accordionTabContentBox">
+		 <br/>This example illustrates how to use the <a href="http://www.openrico.org"
+		 target="_blank">Rico.Accordion</a> behavior to
+		 display a collection of videos in a compact and easy to use interface.<br/>
+		<br/>
+		 These videos are Flash video (.flv) files, and some have cue points. When a cue is<br/>
+		 encountered, an event is fired and the cue point message is displayed.		<br/>
+		<br/>
+		Click on the headings below to see the videos.
+		 
+	  </div>
+	</div>
+
+	<div id="panel2">
+	  <div id="panel2Header" class="accordionTabTitleBar">
+		Qualcomm Stadium Autocross Video
+	  </div>
+		<div id="panel2Content" class="accordionTabContentBox">
+		<table border=0 cellpadding="2" cellspacing="0">
+		<tr>
+			<td rowspan="2">
+				<div id="aflax1">&nbsp;</div>
+			</td>
+			<td width="460" height="190">
+				<div id="videoText"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" onclick="v.pause();" value="Play | Pause"/>
+				<input type="button" onclick="v.seek(0);" value="Rewind"/>
+			</td>
+		</tr>
+		</table>
+	  </div>
+	  </div>
+
+	<div id="panel3">
+	  <div id="panel3Header"  class="accordionTabTitleBar">
+	  	Spring Mountain Track Video
+	  </div>
+		<div id="panel3Content" class="accordionTabContentBox">
+		<table border=0 cellpadding="2" cellspacing="0">
+		<tr>
+			<td rowspan="2">
+				<div id="aflax2">&nbsp;</div>
+			</td>
+			<td width="460" height="190">
+				<font size="+1">Spring Mountain, January 27, 2006</font>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" onclick="v2.pause();" value="Play | Pause"/>
+				<input type="button" onclick="v2.seek(0);" value="Rewind"/>
+			</td>
+		</tr>
+		</table>
+	  </div>
+	</div>
+
+	<div id="panel4">
+	  <div id="panel4Header" class="accordionTabTitleBar">
+	  	More to come...
+	  </div>
+		<div id="panel4Content" class="accordionTabContentBox">
+		<br/>I'll be placing more videos online soon!<br/>&nbsp;
+	  </div>
+	</div>
+
+</div>
+
+		<p></p>
+
+		<input type="button" onclick="stopAll();" value="Stop All Videos"/>
+		
+		<p></p>
+		
+		View source: <a href="../view-source/view-source.html#video3/video.html" target="_blank">video.html</a>
+		<br/>
+		View source: <a href="../view-source/view-source.html#video3/video.js" target="_blank">video.js</a>
+	
+	</div>
+	
+</body>

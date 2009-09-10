@@ -1,0 +1,6 @@
+.videoPlayer {
+    position: relative;
+    height: 320px;
+    width: 240px;
+    border: 1px solid black;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>AFLAX: The AJAX Library for the Adobe Flash&trade; Platform</title>
+	<LINK href='include/style.css' type='text/css' rel='stylesheet'>
+	<script type="text/javascript" src="lib/mochikit/mochikit.js"></script>
+	
+<script type="text/javascript" src="lib/aflax/aflax.js"></script>
+<script type="text/javascript" src="lib/aflax/aflax.canvas.js"></script>
+<script type="text/javascript" src="lib/aflax/aflax.canvas.flash.js"></script>
+<script type="text/javascript" src="lib/aflax/aflax.canvas.canvas.js"></script>
+<script type="text/javascript" src="lib/aflax/aflax.canvas.div.js"></script>
+
+<script type="text/javascript" src="lib/JSDrawing/lib/wz_jsgraphics.js"></script>
+<script type="text/javascript" src="lib/JSDrawing/lib/JSDrawing.js"></script>
+<script type="text/javascript" src="lib/JSDrawing/artwork/Toucan.js"></script>
+	
+<script type="text/javascript">
+
+var fill = "#000000";
+var shapes = [];
+
+function draw()
+{
+	new AFLAX.Canvas("canvas1", onReady, AFLAX.Canvas.RENDERER_FLASH);
+	new AFLAX.Canvas("canvas2", onReady, AFLAX.Canvas.RENDERER_CANVAS);
+	new AFLAX.Canvas("canvas3", onReady, AFLAX.Canvas.RENDERER_DIV);
+	new AFLAX.Canvas("canvas4", onReady, AFLAX.Canvas.RENDERER_BEST);
+}
+
+function onReady(canvas)
+{
+	makeImage();
+	drawShapes(canvas);
+}
+
+function addPath(pathData)
+{
+	var path = new Path(pathData);
+	path.fill = fill;
+	shapes.push(path);
+}
+
+function drawShapes(renderer)
+{
+	renderer.clear();
+	
+	for (var i = 0; i < shapes.length; i++) {
+		shapes[i].draw(renderer);
+	}
+}
+</script>
+	
+</head>
+<body>
+	<div id="body">
+	
+	<script type="text/javascript">
+		window.onload = function(){
+			roundElement("mainmenu");
+			roundElement("downloadbox");
+			draw();
+		}
+	</script> 
+
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr align="left">
+			<td width="245"><img src="/aflax_logo_white.gif"></td>
+			<td align="bottom">
+				<div id="mainmenu" class="menuBox">
+					&nbsp;
+					<a class="menuLink" href="/">Home</a>
+					<a class="menuLink" href="download.aspx">Download</a>
+					<a class="menuLink" href="demos.htm">Demos</a>
+					<a class="menuLink" href="/#documentation">Documentation</a>
+					<a class="menuLink" href="/#support">Support</a>
+					<a class="menuLink" href="/forums">Forums</a>
+					<a class="menuLink" href="/wordpress/">Blog</a>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	<table cellspacing="0" cellpadding="10">
+		<tr>
+			<td>		
+			<div id="content">
+
+				<a name="demos"></a><h2>AFLAX.Canvas</h2>
+
+					This is a sneak preview of the new AFLAX.Canvas project.  AFLAX.Canvas is a
+					cross-browser, cross-platform "canvas" tag that degrades. That is, if running on
+					FireFox or Safari it will use the integrated Canvas tag support. If Flash 8 is 
+					available it will use it. If nothing is available, it will render the graphics
+					using DIVs!<p>
+					
+					You simply define a DIV:<p>
+					
+					<pre>&lt;div id="canvas1" style="width:320px; height: 200px">&lt;/div></pre>
+					
+					Then create an AFLAX.Canvas object. You can then use AFLAX.Canvas API calls,
+					including sending in path data to render graphics. More samples and full source
+					to download is coming soon. Links to the referenced projects is also coming soon.<p>
+					
+					<pre>new AFLAX.Canvas("canvas1", onReady, AFLAX.Canvas.RENDERER_FLASH);
+new AFLAX.Canvas("canvas2", onReady, AFLAX.Canvas.RENDERER_CANVAS);
+new AFLAX.Canvas("canvas3", onReady, AFLAX.Canvas.RENDERER_DIV);
+new AFLAX.Canvas("canvas4", onReady, AFLAX.Canvas.RENDERER_BEST);</pre>
+					
+					<table>
+					<tr>
+					<td>
+						Flash 8: <div id="canvas1" style="position:relative; width: 305px; height: 225px; border: 2px solid #000; margin-right: 20px; margin-bottom: 20px;">&nbsp;</div><br>
+					</td>
+					<td>
+						Canvas Tag: <div id="canvas2" style="position:relative; width: 305px; height: 225px; border: 2px solid #000; margin-right: 20px; margin-bottom: 20px;">&nbsp;</div><br>
+					</td>
+					</tr><tr>
+					<td>
+						HTML: <div id="canvas3" style="position:relative; width: 305px; height: 225px; border: 2px solid #000; margin-right: 20px; margin-bottom: 20px;">&nbsp;</div><br>
+					</td>
+					<td>
+						"Best Avail": <div id="canvas4" style="position:relative; width: 305px; height: 225px; border: 2px solid #000; margin-right: 20px; margin-bottom: 20px;">&nbsp;</div><br>
+					</td>
+					</tr>
+					</table>
+								
+			</div> <!-- Content Div -->
+		</td>
+
+		<td valign="top">
+			<div id="downloadbox">
+				<h1><a href="download.aspx">Download AFLAX Now!</a></h1>
+			</div>
+			
+			<p></p>
+		</td>
+	</tr>
+	</table>
+
+	<p></p>
+	<p></p>
+
+	<a name="tm"></a>
+	<font size=1>
+	AFLAX is a trademark of <a href="http://www.aptana.com/" target="_blank">Aptana, Inc.</a> -- All Rights Reserved<br>
+	Copyright � 2006 Aptana, Inc.<br>
+	</font>
+	
+	</div> <!-- Body div -->
+</body>
+</html>

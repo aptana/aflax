@@ -1,0 +1,117 @@
+2005-03-07		v1.0
+
+- Release version of AFLAX
+- Updated documentation for 1.0
+
+2005-02-08		v0.41
+
+- Refactored Flash communications to not perform and eval() on returns (i.e. faster performance)
+- Added Dojo example and library
+
+2005-02-01		v0.40
+
+- Added CameraClip object to enable use of Cameras with an example
+- Added file upload example and some updates to the aflax.js and aflax.swf to support it
+- Updates sockets chat demo to use Perl based server for simplicity
+
+2005-12-15		v0.35
+
+- Added local storage capability and demo
+- Added JSON code for object serialization and deserialization to local store
+- Created compacted version of aflax.js which is half the size. For original source, see the src directory now.
+- Fixed typo in .as and .js file
+
+2005-12-06		v0.34
+
+- Aflax.swf will now call main() on your code if you did not specify a startup callback function
+- For serialized string data, /r and /n  now becomes //r and //n
+- Changed _getHTML() to getHTML()
+- Updated drawCircle() to use callBulkFunctions() for faster performance
+
+2005-11-28		v0.33
+
+- Added example of dynamically loaded fonts
+- Added embedFonts property to textfield
+- Added optional parameters to callStaticFunction
+- For serialized string data, converted /r to <r> and /n to <n>, use split("<r>").join("\r").split("<n>").join("\n") to get it back
+
+2005-11-23		v0.32
+
+- Let the page author define the "aflax.swf" path by changing "AFLAX.path"
+- Added path parameter to AFLAX constructor to specify path of aflax.swf
+- Updated all samples to use a single shared aflax.swf from the lib directory
+- Only use a <object> element to show the flash object
+- Add AFLAX.addFlashToElement method for adding the Flash HTMLElement to a specified element
+- Added getStage() to AFLAX which returns a MovieClip that is attached to the Stage object and exposes width, height, scaleMode, showMenu, and align
+- Released source code to aflax.swf (aflax.fla and aflax.as)
+
+2005-11-15		v0.31
+
+- Updated usage of exposeFunction and exposeProperty across library and examples to pass in instance
+
+2005-11-14		v0.30
+
+- Added Socket Wrapper Class
+- Added chat demo
+- Added XML demo
+
+2005-11-11		v0.29
+
+- Added callBulkFunctions() to AFLAX object to allow for bulk sending of commands
+- Added new demo, spirograph, which executed over 300 Flash commands per FRAME
+
+2005-11-10		v0.28
+
+- Removed need to aflaxVideo.swf
+- Added support for status event on video clips (to know when it has been loaded, for example)
+- Update SyntaxHighlighter code to latest version
+- Update samples source code to remove extra line breaks
+
+2005-11-09		v0.27
+
+- For createFlashArray(), added suppor for arbitrarily long init args
+- Added wood demo, thanks Joel May for the AS source files
+
+2005-11-09		v0.26
+
+- Added createFlashArray() to AFLAX object
+- Refactored AFLAX.FlashObject for easier use (i.e. new AFLAX.FlashObject(aflax, "objectName", [arg1,args2,arg3]);
+- Added support for Safari
+
+2005-11-08		v0.25
+
+- Added AFLAX.CreateFlashArray to create an Array object in the Flash domain
+- Added new drawing demo
+
+2005-11-08		v0.24
+
+- Added onLoad event to VideoClip, fired after video has been loaded
+- Added video 2 demo
+- Changed license to the Mozilla Public License (see the attached LICENSE.txt file)
+
+2005-11-08		v0.23
+
+- Added version check code for Flash 8.0 using FlashObject which is (c) 2005 Geoff Stearns.
+- Added curveTo() to MovieClip (not tested)
+- Added VideoClip object, now you can play videos with one line of code!
+- Added video demo
+
+2005-11-04		v0.22 (swf update only)
+
+- Added callback mechanism to MovieClip so an event is fired when a movie is loaded (or image, sound, etc.)
+- Added new aqua demo
+
+2005-11-03		v0.21
+
+- Fixed bug in code that made it not work in Firefox
+
+2005-11-03		v0.20
+
+- Changed license to the Apache 2.0 license (http://www.apache.org/licenses/LICENSE-2.0)
+- Moved FlashObject, MovieClip, and TextField objects into the AFLAX namespace (i.e. AFLAX.MovieClip)
+- Updated samples to use new AFLAX lib version
+- Added MochiKit to distribution for viewing of examples source
+
+2005-11-01      v0.10
+
+- Initial Release
