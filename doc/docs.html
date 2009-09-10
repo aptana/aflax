@@ -1,0 +1,673 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>aflax.js</title><style>
+                    body {
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        margin: 0px;
+                        font-size: 11px;
+                    }
+
+                    a {
+                        text-decoration: none;
+                    }
+
+                    a:hover {
+                        text-decoration: underline;
+                    }
+
+                    a:visited {
+                        text-decoration: none;
+                    }
+
+                    img {
+                        border:0px;
+                    }
+
+                    h1 {
+                        width: 100%;
+                        font-weight: bold;
+                        font-size: 18px;
+                        padding: 10px;
+                        padding-left: 20px;
+                        margin-top: 0px;
+                    }
+
+                    h1 a { }
+
+                    h1 a:visited { }
+
+                    pre {
+                        padding: 10px;
+                        margin-left: 15px;
+                        margin-right: 40px;
+                    }
+
+                    .content {
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+
+                    .content h2 {
+                        font-weight: bold;
+                        font-size: 14px;
+                        margin-bottom: 4px;
+                        padding-left: 10px;
+                        padding-top: 6px;
+                    }
+
+                    /* content for the examples */
+                    .content h3 {
+                        font-weight: bold;
+                        font-size: 14px;
+                        padding-left: 10px;
+                        padding-top: 6px;
+                    }
+
+                    /* content for the examples */
+                    .content h4 {
+                        font-weight: bold;
+                        font-size: 14px;
+                        padding-left: 15px;
+                        padding-top: 6px;
+                    }
+
+                    .content p {
+                        margin-left: 15px;
+                    }
+
+                    .content dd {
+                        margin-left: 15px;
+                        padding-bottom: 5px;
+                    }
+
+                    .content dt {
+                        margin-left: 10px;
+                        padding-bottom: 5px;
+                    }
+
+                    .content table {
+                        width:100%;
+                        border-collapse: collapse;
+                        margin-bottom:10px;
+                    }
+
+                    .content th {
+                        font-size: 11px;
+                        font-weight: bold;
+                        text-align: left;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                    }
+
+                    .content td {
+                        font-size: 11px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                    }
+
+                    /* Lists are top-level lists for each class, i.e. constructors, methods, etc. */
+                    .list {
+                        margin-left: 20px;
+                    }
+
+                    .list h3 {
+                        font-weight: bold;
+                        padding-top: 10px;
+                        padding-left: 0px;
+                        padding-bottom: 4px;
+                        background-image: none;
+                    }
+
+                    .list dd {
+                        margin-left: 0px;
+                    }
+
+                    .list dt {
+                        margin-left: 14px;
+                    }
+
+                    .details dt {
+                        font-weight: bold;
+                        font-size: 1.2em;
+                        padding-top: 12px;
+                        padding-left: 0px;
+                        padding-bottom:0px;
+                        margin-bottom: 0px;
+                        margin-left: 15px;
+                    }
+
+                    .details dd {
+                        padding: 0px;
+                        margin: 0px;
+                    }
+
+                    .details dd p
+                    {
+                        margin:0px;
+                        padding:0px;
+                        padding-left: 15px;
+                        padding-top:10px;
+                    }
+
+                    /* from the example documentation */
+                    .details h3 {
+                        font-weight: bold;
+                        font-size: 1.2em;
+                        padding-left: 0px;
+                        margin-bottom: 0px;
+                        margin-left: 14px;
+                        padding-bottom: 0px;
+                        background-image: none;
+                    }
+
+                    .parameters dt {
+                        font-weight: bold;
+                        font-size: 1em;
+                        margin-left: 15px;
+                    }
+
+                    .padded {
+                        margin-top: 0px;
+                        margin-left: 15px;
+                        margin-bottom: 6px;
+                    }
+
+                    .parameter-table {
+                    }
+
+                    .parameters dd {
+                        margin-left: 15px;
+                        margin-bottom: 10px;
+                    }
+
+                    .navigator {
+                        padding-top: 10px;
+                        font-weight: bold;
+                        font-size: 12px;
+                        padding-bottom: 10px;
+                    }
+
+                    .classDescription {
+                        font-size: 1.4em;
+                    }
+
+                    DIV#catlinks {
+                        CLEAR: both; BORDER-RIGHT: #bbb 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #bbb 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 0.9em; BACKGROUND: #eee; PADDING-BOTTOM: 0px; MARGIN: 40px 0px 0px; BORDER-LEFT: #bbb 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #bbb 1px solid
+                    }
+
+                    DIV#catlinks P {
+                        PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 0px; PADDING-TOP: 0px
+                    }
+
+                    .catlink-table {
+                        WIDTH: 100%
+                    }
+
+                    .catlink-table TD {
+                        PADDING-RIGHT: 8px; PADDING-LEFT: 8px; PADDING-BOTTOM: 8px; PADDING-TOP: 8px
+                    }
+
+                    .catlink-table TD H4 {
+                        PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 1em; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: #bbb 1px solid
+                    }
+
+                    .catlink-table UL {
+                        PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 5px 0px; PADDING-TOP: 0px
+                    }
+
+                    .catlink-table LI {
+                        MARGIN: 0px 0px 0px 2em; LINE-HEIGHT: 1.45em
+                    }
+
+                    ol { list-style-type: decimal; }
+                    ol ol { list-style-type: lower-alpha; }
+                    ol ol ol { list-style-type: lower-roman; }
+                    ol ol ol ol { list-style-type: decimal; }
+                    ol ol ol ol ol { list-style-type: lower-alpha; }
+                    ol ol ol ol ol ol { list-style-type: lower-roman; }
+                    ul { list-style-type: square; }
+                    ul ul { list-style-type: disc; }
+                    ul ul ul { list-style-type: circle; }
+                    ul ul ul ul { list-style-type: square; }
+                    ul ul ul ul ul { list-style-type: disc; }
+                    ul ul ul ul ul ul { list-style-type: circle; }
+
+
+                    /* Modify colors/fonts here */
+                    body {	font-family: Verdana, sans-serif; }
+
+
+                    a { color: #5E83C1; }
+                    a:hover { color: #B7D4F3; }
+                    a:visited { color: #5E83C1; }
+
+                    h1 { color: #FFFFFF; background-color: #8F8781; }
+                    h1 a { color: #FFFFFF; }
+                    h1 a:visited { color: #FFFFFF; }
+
+                    pre { background-color: #FFFFE1; border: 1px dotted #ECECEA; color: #CC9933; }
+
+                    .content h2 { color: #8F8781; background-image: url('images/header_background.gif'); background-repeat: repeat-x; }
+                    .content h3 { color: #8F8781; background-image: url('images/header_background.gif'); background-repeat: repeat-x; }
+                    .content table { border: 1px solid #ECECEA; }
+                    .content th { color: #FFFFFF; background-color: #8F8781; }
+                    .content td { border: 1px solid #ECECEA; }
+
+                    .details dt { color: #000000; }
+                    .details h3 { color: #000000; }
+
+                    .parameters dt { color: #000000; }
+                    .parameter-table { background-color: #F9F9F9; }
+
+                    .error { color: #660000 }
+
+                    .deemphasize { color: #8F8781 }
+                    .ignored { color: #CCCCCC }
+
+                    .separator { border-bottom:1px solid orange }
+
+                </style></head>
+   <body>
+      <h1>aflax.js&nbsp;Documentation</h1>
+      <div class="content">
+         <h2>Summary</h2>
+         <p style="font-size:120%"><p>AFLAX(tm) is a JavaScript library for the Macromedia Flash(tm) Platform</p> <p>AFLAX is a trademark of Paul Colton. All
+            Rights Reserved.</p> <p>The contents of this file are subject to the Mozilla Public License Version 1.1 (the "License"); you
+            may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.mozilla.org/MPL/</p>
+            <p>Software distributed under the License is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, either express
+            or implied. See the License for the specific language governing rights and limitations under the License.</p> <p>The Original
+            Code is The AFLAX Library.</p> <p>The Initial Developer of the Original Code is Paul Colton. Portions created by the Initial
+            Developer are Copyright (C) 2005 the Initial Developer. All Rights Reserved.</p> <p>Contributor(s):</p> <ul> <li>Rui Lopes
+            <rgl at ruilopes.com></li> </ul> <p>(End of contributor(s) list.)</p> <p>Paul Colton can be contacted at paul at aflax dot
+            org or write to Paul Colton, c/o AFLAX, 14677 Via Bettona, # # 110-111, San Diego, CA 92127</p> <p>For more information, updates
+            and demos, visit http://www.aflax.org</p>
+         </p>
+         <h2>Global Functions</h2>
+         <ul>
+            <li><a href="#AFLAX">AFLAX</a></li>
+            <li><a href="#AFLAX.FlashObject">AFLAX.FlashObject</a></li>
+            <li><a href="#AFLAX.MovieClip">AFLAX.MovieClip</a></li>
+            <li><a href="#AFLAX.CameraClip">AFLAX.CameraClip</a></li>
+            <li><a href="#AFLAX.VideoClip">AFLAX.VideoClip</a></li>
+            <li><a href="#AFLAX.TextField">AFLAX.TextField</a></li>
+         </ul>
+         <h2>Global Variables</h2>
+         <ul>
+            <li><a href="#com">com</a></li>
+            <li><a href="#JSON">JSON</a></li>
+         </ul>
+      </div><a name="AFLAX"></a><h1>AFLAX</h1>
+      <div class="content">
+         <div class="classDescription">This is the main AFLAX class.</div>
+         <div class="navigator"><a href="#AFLAX.Constructors">Constructors</a> | <a href="#AFLAX.Functions">Functions</a></div><a name="AFLAX.Constructors"></a><table>
+            <tr>
+               <th>Constructor Summary</th>
+            </tr>
+            <tr>
+               <td><a href="#global." title="This is the main AFLAX class.">AFLAX Constructor</a></td>
+            </tr>
+         </table><a name="AFLAX.Functions"></a><table>
+            <tr>
+               <th>Prototype Functions</th>
+            </tr>
+            <tr>
+               <td><a title="" href="#AFLAX.prototype.getHTML">getHTML</a>, <a title="This method create the HTMLElement required to embed the Flash object into your page. This method replaces the child nodes of a given node with the flash HTMLElement." href="#AFLAX.prototype.addFlashToElement">addFlashToElement</a>, <a title="This method inserts the HTML required to embed the Flash object into your page." href="#AFLAX.prototype.insertFlash">insertFlash</a>, <a title="Returns reference to the Flash _root object." href="#AFLAX.prototype.getRoot">getRoot</a>, <a title="Returns reference to the Flash Stage object." href="#AFLAX.prototype.getStage">getStage</a>, <a title="Returns reference to the embedded Flash object." href="#AFLAX.prototype.getFlash">getFlash</a>, <a title="Call a Flash function directly." href="#AFLAX.prototype.callFunction">callFunction</a>, <a title="Store a value into the Flash persistent data store." href="#AFLAX.prototype.storeValue">storeValue</a>, <a title="Gets the value from the Flash persistent data store" href="#AFLAX.prototype.getStoredValue">getStoredValue</a>, <a title="Call a static Flash function (i.e. Mouse.hide())." href="#AFLAX.prototype.callStaticFunction">callStaticFunction</a>, <a title="Get the value of a static property from Flash" href="#AFLAX.prototype.getStaticProperty">getStaticProperty</a>, <a title="Attach and event listener to an object" href="#AFLAX.prototype.attachEventListener">attachEventListener</a>, <a title="Allow for the calling of many commands at once." href="#AFLAX.prototype.callBulkFunctions">callBulkFunctions</a>, <a title="Calls the Flash UpdateAfterEvent function, which refreshes the screen for smoother performance." href="#AFLAX.prototype.updateAfterEvent">updateAfterEvent</a>, <a title="Creates an Array that lives in the Flash domain" href="#AFLAX.prototype.createFlashArray">createFlashArray</a></td>
+            </tr>
+         </table><a name="AFLAX.Functions"></a><table>
+            <tr>
+               <th>Functions</th>
+            </tr>
+            <tr>
+               <td><a title="Hides the Flash settings dialog @static" href="#AFLAX.hideFlashSettings">hideFlashSettings</a>, <a title="Show the Flash settings dialog @static" href="#AFLAX.showFlashSettings">showFlashSettings</a>, <a title="Extends an object to inherit from the passed base class. @static" href="#AFLAX.extend">extend</a>, <a title="Extracts a subset of an Array from a passed in Array. @static" href="#AFLAX.extractArgs">extractArgs</a>, <a title="Construct a new FlashObject." href="#AFLAX.FlashObject">FlashObject</a>, <a title="@extend AFLAX.FlashObject" href="#AFLAX.MovieClip">MovieClip</a>, <a title="The CameraClip class" href="#AFLAX.CameraClip">CameraClip</a>, <a title="@extend AFLAX.MovieClip" href="#AFLAX.VideoClip">VideoClip</a>, <a title="@extend AFLAX.MovieClip" href="#AFLAX.TextField">TextField</a>, <a title="" href="#AFLAX.windowError">windowError</a>, <a title="Tracing function. Output is generated with AFLAX.trace is set to true." href="#AFLAX.trace">trace</a>, <a title="Socket class" href="#AFLAX.Socket">Socket</a></td>
+            </tr>
+         </table><a name="AFLAX.ConstructorDetail"></a><h2>Constructor Detail</h2><a name=".AFLAX"></a><h4>AFLAX()&nbsp;:&nbsp;<i></i></h4>
+         <p class="padded">This is the main AFLAX class.</p>
+         <dl class="details"></dl><a name="AFLAX.FunctionDetail"></a><h2>Function Detail</h2><a name="AFLAX.prototype.getHTML"></a><h4><span class="deemphasize">AFLAX.prototype.</span>getHTML()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded"></p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.addFlashToElement"></a><h4><span class="deemphasize">AFLAX.prototype.</span>addFlashToElement()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">This method create the HTMLElement required to embed the Flash object into your page. This method replaces the child nodes
+            of a given node with the flash HTMLElement.
+         </p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.insertFlash"></a><h4><span class="deemphasize">AFLAX.prototype.</span>insertFlash()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">This method inserts the HTML required to embed the Flash object into your page.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.getRoot"></a><h4><span class="deemphasize">AFLAX.prototype.</span>getRoot()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Returns reference to the Flash _root object.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.getStage"></a><h4><span class="deemphasize">AFLAX.prototype.</span>getStage()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Returns reference to the Flash Stage object.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.getFlash"></a><h4><span class="deemphasize">AFLAX.prototype.</span>getFlash()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Returns reference to the embedded Flash object.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.callFunction"></a><h4><span class="deemphasize">AFLAX.prototype.</span>callFunction()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Call a Flash function directly.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.storeValue"></a><h4><span class="deemphasize">AFLAX.prototype.</span>storeValue()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Store a value into the Flash persistent data store.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.getStoredValue"></a><h4><span class="deemphasize">AFLAX.prototype.</span>getStoredValue()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Gets the value from the Flash persistent data store</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.callStaticFunction"></a><h4><span class="deemphasize">AFLAX.prototype.</span>callStaticFunction()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Call a static Flash function (i.e. Mouse.hide()).</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.getStaticProperty"></a><h4><span class="deemphasize">AFLAX.prototype.</span>getStaticProperty()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Get the value of a static property from Flash</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.attachEventListener"></a><h4><span class="deemphasize">AFLAX.prototype.</span>attachEventListener()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">Attach and event listener to an object</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.callBulkFunctions"></a><h4><span class="deemphasize">AFLAX.prototype.</span>callBulkFunctions()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">Allow for the calling of many commands at once.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.updateAfterEvent"></a><h4><span class="deemphasize">AFLAX.prototype.</span>updateAfterEvent()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">Calls the Flash UpdateAfterEvent function, which refreshes the screen for smoother performance.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.prototype.createFlashArray"></a><h4><span class="deemphasize">AFLAX.prototype.</span>createFlashArray()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Creates an Array that lives in the Flash domain</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.hideFlashSettings"></a><h4><span class="deemphasize">AFLAX.</span>hideFlashSettings()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">Hides the Flash settings dialog @static</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.showFlashSettings"></a><h4><span class="deemphasize">AFLAX.</span>showFlashSettings()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">Show the Flash settings dialog @static</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.extend"></a><h4><span class="deemphasize">AFLAX.</span>extend()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Extends an object to inherit from the passed base class. @static</p>
+         <dl class="details"></dl>
+         <div class="separator"><a name="AFLAX.extend.pseudo"></a><h4><span class="deemphasize">AFLAX.extend.</span>pseudo()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div>
+         </div><a name="AFLAX.extractArgs"></a><h4><span class="deemphasize">AFLAX.</span>extractArgs()&nbsp;:&nbsp;
+            <i></i></h4>
+         <p class="padded">Extracts a subset of an Array from a passed in Array. @static</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.FlashObject"></a><h1>AFLAX.FlashObject</h1>
+         <div class="content">
+            <div class="classDescription">Construct a new FlashObject.</div>
+            <div class="navigator"><a href="#FlashObject.Constructors">Constructors</a> | <a href="#FlashObject.Functions">Functions</a></div><a name="FlashObject.Constructors"></a><table>
+               <tr>
+                  <th>Constructor Summary</th>
+               </tr>
+               <tr>
+                  <td><a href="#AFLAX." title="Construct a new FlashObject.">FlashObject Constructor</a></td>
+               </tr>
+            </table><a name="FlashObject.Functions"></a><table>
+               <tr>
+                  <th>Prototype Functions</th>
+               </tr>
+               <tr>
+                  <td><a title="Calls an arbitrary function on a FlashObject." href="#AFLAX.FlashObject.prototype.callFunction">callFunction</a>, <a title="Takes a list of Flash object properties and functions and creates JavaScript wrappers on the calling object." href="#AFLAX.FlashObject.prototype.bind">bind</a>, <a title="Exposes a Flash property to JavaScript. This method exposes both a setter and a getter for the named property." href="#AFLAX.FlashObject.prototype.exposeProperty">exposeProperty</a>, <a title="Exposes a Flash function to JavaScript." href="#AFLAX.FlashObject.prototype.exposeFunction">exposeFunction</a>, <a title="Maps custom AFLAX Flash functions to JavaScript." href="#AFLAX.FlashObject.prototype.mapFunction">mapFunction</a></td>
+               </tr>
+            </table><a name="FlashObject.ConstructorDetail"></a><h2>Constructor Detail</h2><a name=".FlashObject"></a><h4>FlashObject()</h4>
+            <p class="padded">Construct a new FlashObject.</p>
+            <dl class="details"></dl><a name="FlashObject.FunctionDetail"></a><h2>Function Detail</h2><a name="AFLAX.FlashObject.prototype.callFunction"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.</span>callFunction()&nbsp;:&nbsp;
+               <i></i></h4>
+            <p class="padded">Calls an arbitrary function on a FlashObject.</p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="AFLAX.FlashObject.prototype.bind"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.</span>bind()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded">Takes a list of Flash object properties and functions and creates JavaScript wrappers on the calling object.</p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="AFLAX.FlashObject.prototype.exposeProperty"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.</span>exposeProperty()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded">Exposes a Flash property to JavaScript. This method exposes both a setter and a getter for the named property.</p>
+            <dl class="details"></dl>
+            <div class="separator"><a name="AFLAX.FlashObject.prototype.exposeProperty.methodSuffix"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.exposeProperty.</span>methodSuffix()&nbsp;:&nbsp;
+                  <i><span class="error">Unknown</span></i></h4>
+               <p class="padded"><span class="error">No description provided.</span></p>
+               <dl class="details"></dl>
+               <div class="separator"></div><a name="AFLAX.FlashObject.prototype.exposeProperty.methodSuffix"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.exposeProperty.</span>methodSuffix()&nbsp;:&nbsp;
+                  <i><span class="error">Unknown</span></i></h4>
+               <p class="padded"><span class="error">No description provided.</span></p>
+               <dl class="details"></dl>
+               <div class="separator"></div>
+            </div><a name="AFLAX.FlashObject.prototype.exposeFunction"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.</span>exposeFunction()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded">Exposes a Flash function to JavaScript.</p>
+            <dl class="details"></dl>
+            <div class="separator"><a name="AFLAX.FlashObject.prototype.exposeFunction.functionName"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.exposeFunction.</span>functionName()&nbsp;:&nbsp;
+                  <i><span class="error">Unknown</span></i></h4>
+               <p class="padded"><span class="error">No description provided.</span></p>
+               <dl class="details"></dl>
+               <div class="separator"></div>
+            </div><a name="AFLAX.FlashObject.prototype.mapFunction"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.</span>mapFunction()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded">Maps custom AFLAX Flash functions to JavaScript.</p>
+            <dl class="details"></dl>
+            <div class="separator"><a name="AFLAX.FlashObject.prototype.mapFunction.functionName"></a><h4><span class="deemphasize">AFLAX.FlashObject.prototype.mapFunction.</span>functionName()&nbsp;:&nbsp;
+                  <i><span class="error">Unknown</span></i></h4>
+               <p class="padded"><span class="error">No description provided.</span></p>
+               <dl class="details"></dl>
+               <div class="separator"></div>
+            </div>
+         </div><a name="AFLAX.MovieClip"></a><h1>AFLAX.MovieClip</h1>
+         <div class="content">
+            <div class="classDescription">@extend AFLAX.FlashObject</div>
+            <div class="navigator"><a href="#MovieClip.Constructors">Constructors</a> | <a href="#MovieClip.Functions">Functions</a></div><a name="MovieClip.Constructors"></a><table>
+               <tr>
+                  <th>Constructor Summary</th>
+               </tr>
+               <tr>
+                  <td><a href="#AFLAX." title="@extend AFLAX.FlashObject">MovieClip Constructor</a></td>
+               </tr>
+            </table><a name="MovieClip.Functions"></a><table>
+               <tr>
+                  <th>Prototype Functions</th>
+               </tr>
+               <tr>
+                  <td><a title="Draw a circle" href="#AFLAX.MovieClip.prototype.drawCircle">drawCircle</a>, <a title="Clones the movieclip" href="#AFLAX.MovieClip.prototype.clone">clone</a></td>
+               </tr>
+            </table><a name="MovieClip.ConstructorDetail"></a><h2>Constructor Detail</h2><a name=".MovieClip"></a><h4>MovieClip()</h4>
+            <p class="padded">@extend AFLAX.FlashObject</p>
+            <dl class="details"></dl><a name="MovieClip.FunctionDetail"></a><h2>Function Detail</h2><a name="AFLAX.MovieClip.prototype.drawCircle"></a><h4><span class="deemphasize">AFLAX.MovieClip.prototype.</span>drawCircle()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded">Draw a circle</p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="AFLAX.MovieClip.prototype.clone"></a><h4><span class="deemphasize">AFLAX.MovieClip.prototype.</span>clone()&nbsp;:&nbsp;
+               <i></i></h4>
+            <p class="padded">Clones the movieclip</p>
+            <dl class="details"></dl>
+            <div class="separator"></div>
+         </div><a name="AFLAX.CameraClip"></a><h1>AFLAX.CameraClip</h1>
+         <div class="content">
+            <div class="classDescription">The CameraClip class</div>
+            <div class="navigator"><a href="#CameraClip.Constructors">Constructors</a> | <a href="#CameraClip.Functions">Functions</a></div><a name="CameraClip.Constructors"></a><table>
+               <tr>
+                  <th>Constructor Summary</th>
+               </tr>
+               <tr>
+                  <td><a href="#AFLAX." title="The CameraClip class">CameraClip Constructor</a></td>
+               </tr>
+            </table><a name="CameraClip.Functions"></a><table>
+               <tr>
+                  <th>Functions</th>
+               </tr>
+               <tr>
+                  <td><a title="Returns the list of cameras available." href="#AFLAX.CameraClip.GetCameras">GetCameras</a></td>
+               </tr>
+            </table><a name="CameraClip.ConstructorDetail"></a><h2>Constructor Detail</h2><a name=".CameraClip"></a><h4>CameraClip()</h4>
+            <p class="padded">The CameraClip class</p>
+            <dl class="details"></dl><a name="CameraClip.FunctionDetail"></a><h2>Function Detail</h2><a name="AFLAX.CameraClip.GetCameras"></a><h4><span class="deemphasize">AFLAX.CameraClip.</span>GetCameras()&nbsp;:&nbsp;
+               <i></i></h4>
+            <p class="padded">Returns the list of cameras available.</p>
+            <dl class="details"></dl>
+            <div class="separator"></div>
+         </div><a name="AFLAX.VideoClip"></a><h1>AFLAX.VideoClip</h1>
+         <div class="content">
+            <div class="classDescription">@extend AFLAX.MovieClip</div>
+            <div class="navigator"><a href="#VideoClip.Constructors">Constructors</a> | <a href="#VideoClip.Functions">Functions</a></div><a name="VideoClip.Constructors"></a><table>
+               <tr>
+                  <th>Constructor Summary</th>
+               </tr>
+               <tr>
+                  <td><a href="#AFLAX." title="@extend AFLAX.MovieClip">VideoClip Constructor</a></td>
+               </tr>
+            </table><a name="VideoClip.Functions"></a><table>
+               <tr>
+                  <th>Functions</th>
+               </tr>
+               <tr>
+                  <td><a title="Given a string that was returned by either the Status event or Cue event, return the value for a given name. @static" href="#AFLAX.VideoClip.GetStatusValue">GetStatusValue</a></td>
+               </tr>
+            </table><a name="VideoClip.ConstructorDetail"></a><h2>Constructor Detail</h2><a name=".VideoClip"></a><h4>VideoClip()</h4>
+            <p class="padded">@extend AFLAX.MovieClip</p>
+            <dl class="details"></dl><a name="VideoClip.FunctionDetail"></a><h2>Function Detail</h2><a name="AFLAX.VideoClip.GetStatusValue"></a><h4><span class="deemphasize">AFLAX.VideoClip.</span>GetStatusValue()&nbsp;:&nbsp;
+               <i></i></h4>
+            <p class="padded">Given a string that was returned by either the Status event or Cue event, return the value for a given name. @static</p>
+            <dl class="details"></dl>
+            <div class="separator"></div>
+         </div><a name="AFLAX.TextField"></a><h1>AFLAX.TextField</h1>
+         <div class="content">
+            <div class="classDescription">@extend AFLAX.MovieClip</div>
+            <div class="navigator"><a href="#TextField.Constructors">Constructors</a></div><a name="TextField.Constructors"></a><table>
+               <tr>
+                  <th>Constructor Summary</th>
+               </tr>
+               <tr>
+                  <td><a href="#AFLAX." title="@extend AFLAX.MovieClip">TextField Constructor</a></td>
+               </tr>
+            </table><a name="TextField.ConstructorDetail"></a><h2>Constructor Detail</h2><a name=".TextField"></a><h4>TextField()&nbsp;:&nbsp;<i></i></h4>
+            <p class="padded">@extend AFLAX.MovieClip</p>
+            <dl class="details"></dl>
+         </div><a name="AFLAX.windowError"></a><h4><span class="deemphasize">AFLAX.</span>windowError()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded"></p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.trace"></a><h4><span class="deemphasize">AFLAX.</span>trace()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">Tracing function. Output is generated with AFLAX.trace is set to true.</p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="AFLAX.Socket"></a><h4><span class="deemphasize">AFLAX.</span>Socket()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded">Socket class</p>
+         <dl class="details"></dl>
+         <div class="separator"></div>
+      </div>
+      <h1><a name="com"></a>com
+      </h1>
+      <div class="content">
+         <div class="classDescription"></div>
+         <div class="navigator"><a href="#com.Functions">Functions</a></div><a name="com.Functions"></a><table>
+            <tr>
+               <th>Functions</th>
+            </tr>
+            <tr>
+               <td><a title="" href="#com.deconcept">deconcept</a></td>
+            </tr>
+         </table><a name="com.FunctionDetail"></a><h2>Function Detail</h2><a name="com.deconcept"></a><h4><span class="deemphasize">com.</span>deconcept()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded"><span class="error">No description provided.</span></p>
+         <dl class="details"></dl>
+         <div class="separator"><a name="com.deconcept.FlashObjectUtil"></a><h4><span class="deemphasize">com.deconcept.</span>FlashObjectUtil()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"><a name="com.deconcept.FlashObjectUtil.getPlayerVersion"></a><h4><span class="deemphasize">com.deconcept.FlashObjectUtil.</span>getPlayerVersion()&nbsp;:&nbsp;
+                  <i><span class="error">Unknown</span></i></h4>
+               <p class="padded"></p>
+               <dl class="details"></dl>
+               <div class="separator"></div>
+            </div><a name="com.deconcept.PlayerVersion"></a><h4><span class="deemphasize">com.deconcept.</span>PlayerVersion()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"></p>
+            <dl class="details"></dl>
+            <div class="separator"><a name="com.deconcept.PlayerVersion.prototype.versionIsValid"></a><h4><span class="deemphasize">com.deconcept.PlayerVersion.prototype.</span>versionIsValid()&nbsp;:&nbsp;
+                  <i><span class="error">Unknown</span></i></h4>
+               <p class="padded"></p>
+               <dl class="details"></dl>
+               <div class="separator"></div>
+            </div>
+         </div>
+      </div>
+      <h1><a name="JSON"></a>JSON
+      </h1>
+      <div class="content">
+         <div class="classDescription"></div>
+         <div class="navigator"><a href="#JSON.Functions">Functions</a></div><a name="JSON.Functions"></a><table>
+            <tr>
+               <th>Functions</th>
+            </tr>
+            <tr>
+               <td><a title="" href="#JSON.stringify">stringify</a>, <a title="" href="#JSON.parse">parse</a></td>
+            </tr>
+         </table><a name="JSON.FunctionDetail"></a><h2>Function Detail</h2><a name="JSON.stringify"></a><h4><span class="deemphasize">JSON.</span>stringify()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded"><span class="error">No description provided.</span></p>
+         <dl class="details"></dl>
+         <div class="separator"></div><a name="JSON.parse"></a><h4><span class="deemphasize">JSON.</span>parse()&nbsp;:&nbsp;
+            <i><span class="error">Unknown</span></i></h4>
+         <p class="padded"><span class="error">No description provided.</span></p>
+         <dl class="details"></dl>
+         <div class="separator"><a name="JSON.parse.error"></a><h4><span class="deemphasize">JSON.parse.</span>error()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="JSON.parse.next"></a><h4><span class="deemphasize">JSON.parse.</span>next()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="JSON.parse.white"></a><h4><span class="deemphasize">JSON.parse.</span>white()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="JSON.parse.str"></a><h4><span class="deemphasize">JSON.parse.</span>str()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="JSON.parse.arr"></a><h4><span class="deemphasize">JSON.parse.</span>arr()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="JSON.parse.obj"></a><h4><span class="deemphasize">JSON.parse.</span>obj()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="JSON.parse.num"></a><h4><span class="deemphasize">JSON.parse.</span>num()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="JSON.parse.word"></a><h4><span class="deemphasize">JSON.parse.</span>word()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div><a name="JSON.parse.val"></a><h4><span class="deemphasize">JSON.parse.</span>val()&nbsp;:&nbsp;
+               <i><span class="error">Unknown</span></i></h4>
+            <p class="padded"><span class="error">No description provided.</span></p>
+            <dl class="details"></dl>
+            <div class="separator"></div>
+         </div>
+      </div>
+   </body>
+</html>
